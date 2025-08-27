@@ -1,0 +1,8 @@
+{
+  "name": "gestor-condominio",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/CodeMesh-BR/Gestor-Condominio.git",
+  "author": "Vinicius Galli <vinniegalli@gmail.com>",
+  "license": "MIT"
+}

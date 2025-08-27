@@ -1,0 +1,49 @@
+version: "3.8"
+
+services:
+  # Serviço do Banco de Dados PostgreSQL
+  database:
+    image: postgres:15-alpine
+    container_name: gestor_condo_db
+    restart: always
+    environment:
+      POSTGRES_USER: Codemesh
+      POSTGRES_PASSWORD: Codemesh
+      POSTGRES_DB: gestor_condo
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+
+  # Serviço do Backend NestJS
+  backend:
+    build: ./backend
+    container_name: gestor_condo_backend
+    ports:
+      - "3001:3001"
+    environment:
+      DATABASE_URL: "postgresql://seu_usuario_aqui:sua_senha_forte_aqui@database:5432/gestor_condo?schema=public"
+    depends_on:
+      - database
+    volumes:
+      - ./backend:/usr/src/app
+      - /usr/src/app/node_modules # Impede que o node_modules local sobrescreva o do container
+    command: npm run start:dev # Roda o NestJS em modo de desenvolvimento
+
+  # Serviço do Frontend Next.js
+  frontend:
+    build: ./frontend
+    container_name: gestor_condo_frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules # Impede que o node_modules local sobrescreva o do container
+      - /app/.next # Impede que a pasta de build do container seja sobrescrita
+    command: npm run dev # Roda o Next.js em modo de desenvolvimento
+
+# Define um volume nomeado para persistir os dados do banco
+volumes:
+  postgres_data:
