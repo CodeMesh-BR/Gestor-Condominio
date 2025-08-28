@@ -1,0 +1,17 @@
+# .github/workflows/deploy-on-release.yml
+
+name: Deploy to Vercel on Release
+
+# Este workflow roda apenas quando uma nova "Release" é publicada no GitHub
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy-to-vercel:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel Deploy Hook
+        # Usamos o comando 'curl' para fazer uma requisição POST para a URL do hook
+        # A URL está segura nos segredos do repositório e é acessada via ${{ secrets.NOME_DO_SECRET }}
+        run: curl -X POST "${{ secrets.VERCEL_DEPLOY_HOOK }}"
