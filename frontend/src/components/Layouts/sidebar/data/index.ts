@@ -1,0 +1,101 @@
+import * as Icons from "../icons";
+
+export const NAV_DATA = [
+	{
+		label: "MAIN MENU",
+		items: [
+			{
+				title: "Home",
+				url: "/",
+				icon: Icons.HomeIcon,
+				items: [],
+			},
+			{
+				title: "Avisos",
+				icon: Icons.Alphabet,
+				items: [
+					{
+						title: "Cadastrar novo aviso",
+						url: "/avisos/cadastro",
+					},
+					{
+						title: "Lista de avisos",
+						url: "/avisos",
+					},
+				],
+			},
+			{
+				title: "Calendar",
+				url: "/calendar",
+				icon: Icons.Calendar,
+				items: [],
+			},
+			{
+				title: "Profile",
+				url: "/profile",
+				icon: Icons.User,
+				items: [],
+			},
+			{
+				title: "Tables",
+				url: "/tables",
+				icon: Icons.Table,
+				items: [
+					{
+						title: "Tables",
+						url: "/tables",
+					},
+				],
+			},
+			{
+				title: "Pages",
+				icon: Icons.Alphabet,
+				items: [
+					{
+						title: "Settings",
+						url: "/pages/settings",
+					},
+				],
+			},
+		],
+	},
+	{
+		label: "OTHERS",
+		items: [
+			{
+				title: "Charts",
+				icon: Icons.PieChart,
+				items: [
+					{
+						title: "Basic Chart",
+						url: "/charts/basic-chart",
+					},
+				],
+			},
+			{
+				title: "UI Elements",
+				icon: Icons.FourCircle,
+				items: [
+					{
+						title: "Alerts",
+						url: "/ui-elements/alerts",
+					},
+					{
+						title: "Buttons",
+						url: "/ui-elements/buttons",
+					},
+				],
+			},
+			{
+				title: "Authentication",
+				icon: Icons.Authentication,
+				items: [
+					{
+						title: "Sign In",
+						url: "/auth/sign-in",
+					},
+				],
+			},
+		],
+	},
+];

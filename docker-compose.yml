@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   # Serviço do Banco de Dados PostgreSQL
   database:
@@ -22,7 +20,7 @@ services:
     ports:
       - "3001:3001"
     environment:
-      DATABASE_URL: "postgresql://seu_usuario_aqui:sua_senha_forte_aqui@database:5432/gestor_condo?schema=public"
+      DATABASE_URL: "postgresql://Codemesh:Codemesh@database:5432/gestor_condo?schema=public"
     depends_on:
       - database
     volumes:
