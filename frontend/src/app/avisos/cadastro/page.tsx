@@ -16,6 +16,7 @@ const AvisosPage = () => {
 		nivelImportancia,
 		setNivelImportancia,
 		handleSubmit,
+		isLoading,
 	} = useAvisoForm();
 	return (
 		<>
@@ -54,7 +55,7 @@ const AvisosPage = () => {
 							/>
 
 							<button className="mt-6 flex justify-center rounded-lg bg-primary p-[13px] font-medium text-white hover:bg-opacity-90">
-								Cadastrar aviso
+								{isLoading ? "Cadastrando..." : "Cadastrar"}
 							</button>
 						</ShowcaseSection>
 					</form>

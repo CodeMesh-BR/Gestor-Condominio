@@ -25,4 +25,12 @@ export class AvisosService {
 			},
 		});
 	}
+
+	async remove(id: string) {
+		return this.prisma.aviso.delete({
+			where: {
+				id: id,
+			},
+		});
+	}
 }

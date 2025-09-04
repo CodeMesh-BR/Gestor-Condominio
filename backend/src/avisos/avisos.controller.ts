@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { AvisosService } from './avisos.service';
 import { CreateAvisoDto } from './dto/create-aviso.dto';
 
@@ -14,5 +14,10 @@ export class AvisosController {
 	@Get()
 	findAll() {
 		return this.avisosService.findAll();
+	}
+
+	@Delete(':id')
+	remove(@Param('id') id: string) {
+		return this.avisosService.remove(id);
 	}
 }

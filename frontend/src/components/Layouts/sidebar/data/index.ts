@@ -20,7 +20,7 @@ export const NAV_DATA = [
 					},
 					{
 						title: "Lista de avisos",
-						url: "/avisos",
+						url: "/avisos/listar",
 					},
 				],
 			},

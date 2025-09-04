@@ -1,10 +1,6 @@
+"use client";
+import { avisosService } from "@/services/avisos.services";
 import { useCallback, useState } from "react";
-
-const INITIAL_STATE = {
-	titulo: "",
-	conteudo: "",
-	nivelImportancia: "0",
-};
 
 export const useAvisoForm = () => {
 	const [titulo, setTitulo] = useState("");
@@ -26,24 +22,13 @@ export const useAvisoForm = () => {
 			};
 
 			try {
-				const response = await fetch("http://localhost:3001/avisos", {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify(avisoData),
-				});
-				if (!response.ok) {
-					throw new Error("Falha ao cadastrar aviso");
-				}
-
-				const result = await response.json();
-				console.log(result);
+				const result = await avisosService.createAviso(avisoData);
+				console.log("Aviso cadastrado com sucesso!", result);
 				alert("Aviso cadastrado com sucesso!");
 
-				setTitulo(INITIAL_STATE.titulo);
-				setConteudo(INITIAL_STATE.conteudo);
-				setNivelImportancia(INITIAL_STATE.nivelImportancia);
+				setTitulo("");
+				setConteudo("");
+				setNivelImportancia("NORMAL");
 			} catch (error) {
 				setIsError(
 					error instanceof Error
