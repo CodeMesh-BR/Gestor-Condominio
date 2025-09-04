@@ -1,0 +1,31 @@
+datasource db {
+	provider = "postgresql"
+	url = env("DATABASE_URL")
+}
+
+generator client {
+	provider = "prisma-client-js"
+	binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x"]
+}
+
+enum NivelImportancia {
+	NORMAL
+	IMPORTANTE
+	URGENTE
+}
+
+enum StatusAviso {
+	ATIVO
+	ENCERRADO
+}
+
+model Aviso {
+	id String @id @default(cuid())
+	titulo String
+	conteudo String
+	nivelImportancia NivelImportancia @default(NORMAL)
+	status StatusAviso @default(ATIVO)
+
+	createdAt DateTime @default(now())
+	updatedAt DateTime @updatedAt
+}
